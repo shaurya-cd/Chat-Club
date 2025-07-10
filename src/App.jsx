@@ -13,7 +13,10 @@ import { useThemeStore } from "./store/useThemeStore";
 
 function App() {
 
-  const {isCheckingAuth,authUser,checkAuth} = useAuthStore()
+  const {isCheckingAuth,authUser,checkAuth,onlineUsers} = useAuthStore()
+
+  console.log({ onlineUsers });
+
   const { theme } = useThemeStore();
 
   useEffect(()=>{
@@ -29,7 +32,7 @@ function App() {
   )
 
   return (
-    <div className='h-[130vh]' data-theme={theme}>
+    <div data-theme={theme}>
       <Navbar />
       <Routes>
         <Route path='/' element={authUser ? <Home /> : <Navigate to="/login" />} />
