@@ -14,7 +14,9 @@ export const useChatStore = create((set,get)=>({
     getUsers:async()=>{
         set({isUserLoading:true})
         try {
-            const res = await axiosInstance.get("/msg/users")
+            const res = await axiosInstance.get("/msg/users",{
+                withCredentials: true
+            })
             set({users:res.data})
         } catch (error) {
             toast.error("Failed to fetch user")
